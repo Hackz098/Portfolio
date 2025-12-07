@@ -8,6 +8,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Adnan Bin Zakir</div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#volunteer" class="nav-link">Volunteer</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-content">
@@ -18,6 +33,9 @@
             <p class="hero-subtitle">I build modern, responsive, and fast web applications.</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">View My Work</button>
+                <a href="documents/CV.pdf" download class="btn btn-primary" style="text-decoration: none;">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
                 <button class="btn btn-glass" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Contact Me</button>
             </div>
         </div>
@@ -93,6 +111,86 @@
                 <div class="tech-card">
                     <i class="fas fa-database"></i>
                     <span>SQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications & Qualifications</h2>
+            <p class="section-subtitle">Professional certifications and educational achievements that demonstrate my commitment to continuous learning</p>
+            <div class="certifications-grid">
+                <div class="certificate-card">
+                    <div class="certificate-image">
+                        <img src="images/eshikhon-certificate.jpg" alt="Eshikhon Web Development Certificate" onclick="openCertificateModal('images/eshikhon-certificate.jpg', 'Eshikhon Web Development Certificate')">
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Web Development Certificate</h3>
+                        <p class="certificate-org">Eshikhon</p>
+                        <p class="certificate-desc">Comprehensive web development training covering modern frontend and backend technologies</p>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-image">
+                        <img src="images/hb-aviation-certificate.jpg" alt="HB Aviation Certificate" onclick="openCertificateModal('images/hb-aviation-certificate.jpg', 'HB Aviation Certificate')">
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Aviation Certificate</h3>
+                        <p class="certificate-org">HB Aviation</p>
+                        <p class="certificate-desc">Professional certification in aviation-related studies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Experience Section -->
+    <section id="volunteer" class="volunteer">
+        <div class="container">
+            <h2 class="section-title">Volunteer Experience</h2>
+            <p class="section-subtitle">Contributing to meaningful causes and making a positive impact in the community</p>
+            <div class="volunteer-grid">
+                <div class="volunteer-card">
+                    <div class="volunteer-image">
+                        <img src="images/volunteer-aims.jpg" alt="AIMS Education Volunteer Certificate" onclick="openCertificateModal('images/volunteer-aims.jpg', 'AIMS Education Volunteer Certificate')">
+                    </div>
+                    <div class="volunteer-content">
+                        <h3>AIMS Education</h3>
+                        <p class="volunteer-role">Volunteer</p>
+                        <p class="volunteer-desc">Contributed to educational initiatives and community development programs</p>
+                    </div>
+                </div>
+                <div class="volunteer-card">
+                    <div class="volunteer-image">
+                        <img src="images/volunteer-cds.jpg" alt="CDS Volunteer Certificate" onclick="openCertificateModal('images/volunteer-cds.jpg', 'CDS Volunteer Certificate')">
+                    </div>
+                    <div class="volunteer-content">
+                        <h3>CDS</h3>
+                        <p class="volunteer-role">Volunteer</p>
+                        <p class="volunteer-desc">Active participation in community development and social service activities</p>
+                    </div>
+                </div>
+                <div class="volunteer-card">
+                    <div class="volunteer-image">
+                        <img src="images/volunteer-usaid.jpg" alt="USAID Volunteer Certificate" onclick="openCertificateModal('images/volunteer-usaid.jpg', 'USAID Volunteer Certificate')">
+                    </div>
+                    <div class="volunteer-content">
+                        <h3>USAID</h3>
+                        <p class="volunteer-role">Volunteer</p>
+                        <p class="volunteer-desc">Supported international development programs and initiatives</p>
+                    </div>
+                </div>
+                <div class="volunteer-card">
+                    <div class="volunteer-image">
+                        <img src="images/volunteer-participation.jpg" alt="Participation Certificate" onclick="openCertificateModal('images/volunteer-participation.jpg', 'Participation Certificate')">
+                    </div>
+                    <div class="volunteer-content">
+                        <h3>Community Participation</h3>
+                        <p class="volunteer-role">Active Participant</p>
+                        <p class="volunteer-desc">Engaged in various community events and volunteer activities</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,6 +307,18 @@
         </div>
     </section>
 
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="modal-close" onclick="closeCertificateModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -217,6 +327,32 @@
     </footer>
 
     <script>
+        // Certificate Modal Functions
+        function openCertificateModal(imageSrc, caption) {
+            const modal = document.getElementById('certificateModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            captionText.innerHTML = caption;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target == modal) {
+                closeCertificateModal();
+            }
+        }
+
+        // Original Scripts
         // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -251,6 +387,46 @@
             e.preventDefault();
             // Add your form submission logic here
             alert('Thank you for your message! I\'ll get back to you soon.');
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
